@@ -1,0 +1,55 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyBuddy</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/ypage.css' %}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo"><a href="{% url 'home' %}">StudyBuddy</a></div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for posts">
+            </div>
+            <div class="profile">
+                <img src="{%static 'image/profile.jpg' %}" alt="">
+
+            </div>
+        </nav>
+        
+        <div class="content">
+            
+            <main class="study-rooms">
+                <div class="room">
+                    <div class="room-header">
+                        <span>Write your post</span>
+                    </div>
+                    <form method="post">
+                            {%csrf_token%}
+                    <div class="postbar">
+                        <input type="text" placeholder="whats in your mind ?" name="posting">
+                    </div>      
+                    <div class="create-room">
+                        <br>
+                        
+                            <button type="submit" >Post</button>
+                        
+                    </div> </form>          
+                </div>
+
+            </main>
+            
+            <aside class="recent-activities">
+                <div class="x">
+                <h2>Recent Activities</h2></div>
+                <!--div class="activity">
+                    <h4>@dennis</h4>
+                    <span> replied to post "Vue JS Developers Assemble!"</span>
+                </div-->
+
+            </aside>
+        </div>
+    </div>
+</body>

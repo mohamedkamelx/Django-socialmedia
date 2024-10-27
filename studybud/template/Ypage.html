@@ -1,0 +1,78 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyBuddy</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/ypage.css' %}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo"><a href="{%url 'home' %}">StudyBuddy</a></div>
+            <div class="search-bar">
+                <form method="get">
+                    <input type="text" placeholder="Search for posts" name="coco">
+                </form>
+            </div>
+            <div class="profile">
+                <img src="{%static 'image/profile.jpg' %}" alt="">
+            </div>
+        </nav>
+        
+        <div class="content">
+            <aside class="sidebar">
+                <h2>Browse Topics</h2>
+                <!-- ul class="koko" >
+                    <li>All <span>5</span></li>
+
+                </ul -->
+
+            </aside>
+            
+            <main class="study-rooms">
+                    <div class="create-room">
+                    <form method="get" action="{% url 'create' %}">
+                        {%csrf_token%}
+                        <button type="submit" >Create Post</button>
+                    </form>
+                    </div>
+                {%for i in post %}
+                <div class="room">
+                    <div class="room-header">
+                        
+                        <div class="profile">
+                            <img src="{%static 'image/profile.jpg' %}" alt=""><span>@MOHAMED</span>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="room-content">
+                        {{i.ttext}}
+                    </div>
+                    <div class="room-footer">
+                        <span>posted at {{i.timee.hour}}:{{i.timee.minute}}</span>
+                    <div>
+                        <button class="ellipse-button">Like</button>
+                        <button class="ellipse-button">comment</button>
+                        <button class="ellipse-button">share</button>
+                    </div>
+                    </div>
+                </div>
+                {%endfor%}
+
+            </main>
+            
+            <aside class="recent-activities">
+                <div class="x">
+                <h2>Recent Activities</h2></div>
+                <!--div class="activity">
+                    <h4>@dennis</h4>
+                    <span> replied to post "Vue JS Developers Assemble!"</span>
+                </div-->
+
+            </aside>
+        </div>
+    </div>
+</body>
