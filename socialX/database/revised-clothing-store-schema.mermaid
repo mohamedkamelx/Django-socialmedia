@@ -1,0 +1,54 @@
+erDiagram
+    PRODUCT ||--o{ PRODUCT_VARIANT : "has"
+    PRODUCT ||--o{ PRODUCT_IMAGE : "has"
+    PRODUCT_VARIANT ||--o{ INVENTORY : "has"
+    PRODUCT_VARIANT }o--|| COLOR : "has"
+    PRODUCT_VARIANT }o--|| SIZE : "has"
+    CATEGORY ||--o{ PRODUCT : "belongs to"
+
+    PRODUCT {
+        int product_id PK
+        string name
+        text description
+        decimal base_price
+        int category_id FK
+    }
+
+    PRODUCT_VARIANT {
+        int variant_id PK
+        int product_id FK
+        int color_id FK
+        int size_id FK
+        decimal price_adjustment
+        string sku
+    }
+
+    INVENTORY {
+        int inventory_id PK
+        int variant_id FK
+        int quantity
+    }
+
+    PRODUCT_IMAGE {
+        int image_id PK
+        int product_id FK
+        string image_url
+        boolean is_primary
+        int color_id FK "Optional"
+    }
+
+    COLOR {
+        int color_id PK
+        string color_name
+        string color_code
+    }
+
+    SIZE {
+        int size_id PK
+        string size_name
+    }
+
+    CATEGORY {
+        int category_id PK
+        string category_name
+    }
